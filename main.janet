@@ -36,6 +36,7 @@
             [["init" "conf.lua"] ["conf.lua"]]
             [["init" "settings.fnl"] ["settings.fnl"]]
             [["init" "game.fnl"] ["game.fnl"]]
+            [["reqdict.fnl"] ["scenes.fnl"]]
             [["init" "LICENSE"] ["LICENSE"]]
             [["init" "watch.ps1"] ["watch.ps1"]]
             [["init" "webPrep.ps1"] ["webPrep.ps1"]]
@@ -43,9 +44,9 @@
             [["lib" "v.fnl"] ["lib" "v.fnl"]]
             [["lib" "f.fnl"] ["lib" "f.fnl"]]
             [["lib" "m.fnl"] ["lib" "m.fnl"]]
-            [["assets" "Inconsolata.ttf"] ["assets" "Incosolata.ttf"]]
+            [["assets" "Inconsolata.ttf"] ["assets" "Inconsolata.ttf"]]
             [["assets" "init.fnl"] ["assets" "init.fnl"]]
-            [["scenes" "title"]["game" "scenes" "title.fnl"]]
+            [["scenes" "title.fnl"]["game" "scenes" "title.fnl"]]
             ]
     (copy-base from to)
     )
@@ -87,6 +88,7 @@
     ["init" ] (init-proj ".")
     ["add" "scene" name] (copy-base ["scenes" "basic.fnl"] [(game-base) "scenes" (.. name ".fnl") ])
     ["add" "system" name] (copy-base ["system.fnl"] [(game-base) "systems" (.. name ".fnl") ])
+    ["add" "reqdict" name] (copy-base ["reqdict.fnl"] [(game-base) (.. name ".fnl") ])
     _ (do 
         (usage)
         (eprint (.. "Didn't recognize part of " args " as a command!")))

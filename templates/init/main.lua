@@ -1,3 +1,3 @@
 require("bootstrap")
-local game = require("start-game")
+local game = require("game")
 

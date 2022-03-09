@@ -7,3 +7,11 @@
   :entry "main.janet")
 
 
+(phony "inst" ["build"]
+       (print "Installing")
+       (os/cd "build")
+       (os/shell "inst scaff.exe")
+       (os/cd "..")
+       (print "Installed"))
+
+

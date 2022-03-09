@@ -2,6 +2,7 @@
 (imp v) (imp f)
 (imp assets)
 (imp fennel)
+(imp scenes)
 
 (local gfx love.graphics)
 
@@ -37,7 +38,7 @@
 (fn love.load [] 
   (each [_ [name r] 
          (ipairs 
-           [[:title :game.title] 
+           [[:title :game.scenes.title] 
             ])]
     (scenes.set name (require r)))
 
@@ -56,13 +57,10 @@
 
   ;(love.graphics.print (love.timer.getFPS) 10 10)
   (gfx.push)
-  (when MODE.draw 
-    (effect.draw (fn [] (MODE.draw MODE))))
+  (when MODE.draw (MODE:draw))
   (gfx.pop))
 
-(fn love.update [dtprime]
-  (local dt (* dtprime (dial.get)))
-  (shake.update dt)
+(fn love.update [dt]
 
   (each [k (pairs love.keys.justPressed)]
     (when (= k :escape)
